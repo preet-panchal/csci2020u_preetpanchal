@@ -1,0 +1,49 @@
+buildscript {
+	repositories {
+		flatDir dirs: '/Users/preetpanchal/Desktop/WINTER 2022/CSCI2020U/LABS/csci2020u_preetpanchal/proguard6.2.2/lib'
+	}
+	dependencies {
+		classpath ':proguard'
+	}
+}
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'org.apache.commons:commons-csv:1.8' // Fetches library specified for main source code
+}
+
+application {
+    mainClassName = 'csci2020u.lab02.CSVDemo'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Main'Class :
+        'Implementation-Title': 'Lab03',
+        'Implementation-Version': version
+    }
+}
+
+
+task (minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask) {
+	configuration 'proguard.cfg'
+	injars'build/libs/lab03.jar'
+	outjars'build/libs/lab03-1.0.min.jar'
+}
