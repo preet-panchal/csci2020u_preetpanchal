@@ -33,15 +33,6 @@ test {
     useJUnitPlatform()
 }
 
-task fatJar(type: Jar) {
-	manifest {
-        attributes 'Main'Class :
-        'Implementation-Title': 'Lab03',
-        'Implementation-Version': version
-    }
-}
-
-
 task (minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask) {
 	configuration 'proguard.cfg'
 	injars'build/libs/lab03.jar'
