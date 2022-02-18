@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<GridPane xmlns="http://javafx.com/javafx" fx:controller="csci2020u.lab04.Main" xmlns:fx="http://javafx.com/fxml"
+          hgap="5" vgap="10">
+<padding><Insets top="35" right="5" bottom="5" left="50"/></padding>
+
+    <Label text="UserName: " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField id="UserName" fx:id="UserName" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+    <Label text="Password: " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <PasswordField id="Password" fx:id="Password" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Full Name: " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField id="FullName" fx:id="FullName" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label text="E-mail: " GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField id="Email" fx:id="Email" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <Label id="EmailError" fx:id="EmailError" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+
+    <Label text="Phone #: " GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField id="PhoneNumber" fx:id="PhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label text="Date of Birth: " GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <DatePicker id="DOB" fx:id="DOB" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <Button text="Register" GridPane.columnIndex="1" GridPane.rowIndex="6" onAction="#handleRegisterButtonAction"/>
+</GridPane>
