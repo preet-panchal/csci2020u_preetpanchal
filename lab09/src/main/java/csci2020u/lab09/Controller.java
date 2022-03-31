@@ -11,12 +11,12 @@ public class Controller {
     private float[] AAPL;
     private float[] GOOG;
 
-    private int x = 900;
+    private int x = 800;
     private int y = 700;
 
     private float maxValue = 0.0000f;
     private double width;
-    private double hieght;
+    private double height;
 
     @FXML
     public void initialize() {
@@ -35,39 +35,39 @@ public class Controller {
     }
 
     public void plotLine(GraphicsContext gc) {
-        for (int x = 0; x < AAPL.length; x++) {
-            if (AAPL[x] > maxValue) {
-                maxValue = AAPL[x];
+        for (float v : AAPL) {
+            if (v > maxValue) {
+                maxValue = v;
             }
         }
 
-        for (int x = 0; x < GOOG.length; x++) {
-            if (GOOG[x] > maxValue) {
-                maxValue = GOOG[x];
+        for (float v : GOOG) {
+            if (v > maxValue) {
+                maxValue = v;
             }
         }
 
-        width = (x - 275) / (GOOG.length + 1);
-        hieght = (y - 275) / maxValue;
+        width = (x - 100) / (GOOG.length + 1);
+        height = (y - 100) / maxValue;
 
-        gc.strokeLine(100, 100, 100, y - 75);
-        gc.strokeLine(100, y - 75, x - 100, y - 75);
+        gc.strokeLine(50, 50, 50, y - 50);
+        gc.strokeLine(50, y - 50, x - 50, y - 50);
     }
 
     private void drawLinePlot(GraphicsContext gc) {
-        double start = 100;
+        double start = 50;
         gc.setStroke(Color.BLUE);
 
         for (int x = 0; x < AAPL.length - 1; x++) {
-            gc.strokeLine(start, (y - 100) - (AAPL[x] * hieght), (start + width), (y - 100) - (AAPL [x+1] * hieght));
+            gc.strokeLine(start, (y - 50) - (AAPL[x] * height), (start + width), (y - 50) - (AAPL [x+1] * height));
             start = start + width;
         }
-        start = 100;
+        start = 50;
 
         gc.setStroke(Color.RED);
 
         for (int x = 0; x < GOOG.length - 1; x++) {
-            gc.strokeLine(start, (y - 100) - (GOOG[x] * hieght), (start + width), (y - 100) - (GOOG [x+1] * hieght));
+            gc.strokeLine(start, (y - 50) - (GOOG[x] * height), (start + width), (y - 50) - (GOOG [x+1] * height));
             start = start + width;
         }
     }

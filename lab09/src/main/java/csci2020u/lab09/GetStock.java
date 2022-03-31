@@ -19,7 +19,7 @@ public class GetStock {
     }
 
     public static void downloadStockPrices() {
-        String url = "https://query1.finance.yahoo.com/v7/finance/download/" + urlStock + "?period1=1262322000&period2=1616817600&interval=1mo&events=history&includeAdjustedClose=true";
+        String url = "https://query1.finance.yahoo.com/v7/finance/download/" + urlStock + "?period1=1262322000&period2=1451538000&interval=1mo&events=history&includeAdjustedClose=true";
         String line = "";
         int index = 0;
 
@@ -28,10 +28,8 @@ public class GetStock {
             URLConnection urlConnection = csv.openConnection();
             Scanner input = new Scanner(urlConnection.getInputStream());
 
-            String[][] data = new String[136 - 1][7];
-
-            closingVal = new float[136 - 1];
-
+            String[][] data = new String[72][7];
+            closingVal = new float[72];
             line = input.nextLine();
 
             while(input.hasNextLine()) {
@@ -39,17 +37,13 @@ public class GetStock {
                 line = input.nextLine();
                 String[] values = line.split(",");
 
-                for(int i = 0; i <= 6; i++){
-                    data[index][i] = values[i];
-                }
-                closingVal[index] = Float.parseFloat(data[index][3]);
-
+                System.arraycopy(values, 0, data[index], 0, 7);
+                closingVal[index] = Float.parseFloat(data[index][4]);
                 index++;
             }
 
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }
