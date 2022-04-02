@@ -13,7 +13,7 @@ public class Server extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("server.fxml")));
-        primaryStage.setTitle("SimpleBBS Server v1.0 Lab10");
+        primaryStage.setTitle("SimpleBBS Server v1.0");
         primaryStage.setScene(new Scene(root, 500, 350));
         primaryStage.show();
     }
